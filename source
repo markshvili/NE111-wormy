@@ -140,15 +140,19 @@ def runGame():
 # ------------------------------------------------------------ V V
 
 
-def drawPressKeyMsg():
+def drawPressKeyMsg():  # Display text at the beginning of the game
+    # Get font, contents of text, enable anti-aliasing and select colour -> Make a sureface
     pressKeySurf = BASICFONT.render('Press a key to play.', True, DARKGRAY)
+    # Get the rectangular area of the surface
     pressKeyRect = pressKeySurf.get_rect()
+    # Set the coordinates for the top-left corner of the rectangle
     pressKeyRect.topleft = (WINDOWWIDTH - 200, WINDOWHEIGHT - 30)
+    # Draw the rectangle and the press key text on the game window
     DISPLAYSURF.blit(pressKeySurf, pressKeyRect)
 
 
 def checkForKeyPress():
-    if len(pygame.event.get(QUIT)) > 0:
+    if len(pygame.event.get(QUIT)) > 0:  # Terminate the game when there is a 'QUIT' in the event list
         terminate()
 
     keyUpEvents = pygame.event.get(KEYUP)
