@@ -30,9 +30,9 @@ DARKGRAY = (40,  40,  40)
 BGCOLOR = BLACK
 
 UP = 'up' #up arrow on keyboard
-DOWN = 'down'
-LEFT = 'left'
-RIGHT = 'right'
+DOWN = 'down' #down arrow on keyboard
+LEFT = 'left' #left arrow on keyboard
+RIGHT = 'right' #right arrow on keyboard
 
 HEAD = 0  # syntactic sugar: index of the worm's head
 
