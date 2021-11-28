@@ -205,8 +205,8 @@ def getRandomLocation():
     return {'x': random.randint(0, CELLWIDTH - 1), 'y': random.randint(0, CELLHEIGHT - 1)}
 
 
-def showGameOverScreen():
-    gameOverFont = pygame.font.Font('freesansbold.ttf', 150)
+def showGameOverScreen(): # function defining the game over screen
+    gameOverFont = pygame.font.Font('freesansbold.ttf', 150) # size and font of the "game over"
     gameSurf = gameOverFont.render('Game', True, WHITE)
     overSurf = gameOverFont.render('Over', True, WHITE)
     gameRect = gameSurf.get_rect()
