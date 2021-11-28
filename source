@@ -27,7 +27,7 @@ RED = (255,   0,   0)
 GREEN = (0, 255,   0)
 DARKGREEN = (0, 155,   0)
 DARKGRAY = (40,  40,  40)
-BGCOLOR = BLACK
+BGCOLOR = BLACK  #background color is black
 
 UP = 'up' #up arrow on keyboard
 DOWN = 'down' #down arrow on keyboard
@@ -201,22 +201,22 @@ def terminate():
 #------------------------------------------------------------ Valentyna
 # ------------------------------------------------------------ | | | | |
 # ------------------------------------------------------------ V V V V V
-def getRandomLocation():
+def getRandomLocation(): #function that gets random location, maybe for the apple or the starting position of the worm?
     return {'x': random.randint(0, CELLWIDTH - 1), 'y': random.randint(0, CELLHEIGHT - 1)}
 
 
 def showGameOverScreen(): # function defining the game over screen
     gameOverFont = pygame.font.Font('freesansbold.ttf', 150) # size and font of the "game over"
-    gameSurf = gameOverFont.render('Game', True, WHITE)
-    overSurf = gameOverFont.render('Over', True, WHITE)
-    gameRect = gameSurf.get_rect()
-    overRect = overSurf.get_rect()
-    gameRect.midtop = (WINDOWWIDTH / 2, 10)
-    overRect.midtop = (WINDOWWIDTH / 2, gameRect.height + 10 + 25)
+    gameSurf = gameOverFont.render('Game', True, WHITE) #brings the "game" text to the surface of screen, sets colour to white
+    overSurf = gameOverFont.render('Over', True, WHITE) # brings the "over " txt to front of the screen, sets colour to white
+    gameRect = gameSurf.get_rect() #gets the rectangular area of the surface for "game" text
+    overRect = overSurf.get_rect() #gets the rectangular area of the surface for "over" text
+    gameRect.midtop = (WINDOWWIDTH / 2, 10) #position of the rectangle containing "game" text (middle of the top edge of the rectangle)
+    overRect.midtop = (WINDOWWIDTH / 2, gameRect.height + 10 + 25) #position of the rectangle containing "over" text (middle of the top edge of the rectangle)
 
-    DISPLAYSURF.blit(gameSurf, gameRect)
-    DISPLAYSURF.blit(overSurf, overRect)
-    drawPressKeyMsg()
+    DISPLAYSURF.blit(gameSurf, gameRect) #displays "game" text with correct font, location, colour on the surface
+    DISPLAYSURF.blit(overSurf, overRect) #displays "over" text with correct font, location, colour on the surface
+    drawPressKeyMsg() #fucntion that displays the "press a key to play" text
     pygame.display.update()
     pygame.time.wait(500)
     checkForKeyPress()  # clear out any key presses in the event queue
@@ -227,11 +227,11 @@ def showGameOverScreen(): # function defining the game over screen
             return
 
 
-def drawScore(score):
-    scoreSurf = BASICFONT.render('Score: %s' % (score), True, WHITE)
-    scoreRect = scoreSurf.get_rect()
-    scoreRect.topleft = (WINDOWWIDTH - 120, 10)
-    DISPLAYSURF.blit(scoreSurf, scoreRect)
+def drawScore(score): #function displaying the score of the game
+    scoreSurf = BASICFONT.render('Score: %s' % (score), True, WHITE) #font, colour of the score text, the "%s" is a number
+    scoreRect = scoreSurf.get_rect() #gets the area of the rectangle containing the score, puts it on the surface of screen
+    scoreRect.topleft = (WINDOWWIDTH - 120, 10) #position of the top left corner of rectangle containing the score
+    DISPLAYSURF.blit(scoreSurf, scoreRect) #moves it all to the front of the screen
 # ------------------------------------------------------------ ^ ^ ^ ^ ^
 # ------------------------------------------------------------ | | | | |
 #------------------------------------------------------------ Valentyna
