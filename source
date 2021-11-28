@@ -6,21 +6,21 @@
 #------------------------------------------------------------ Valentyna
 # ------------------------------------------------------------ | | | | |
 # ------------------------------------------------------------ V V V V V
-import random
-import pygame
-import sys
-from pygame.locals import *
+import random #imports the random module (allows you to randomize things like tha apple's location)
+import pygame #imports all available pygame modules 
+import sys #imports the system module which is a set of functions which gives you info on the runtime environment
+from pygame.locals import * #imports pygame module into current namespace 
 
-FPS = 15
-WINDOWWIDTH = 640
-WINDOWHEIGHT = 480
-CELLSIZE = 20
+FPS = 15 #define frames per second, 15 different images show up every second on screen
+WINDOWWIDTH = 640 #define the width of the window
+WINDOWHEIGHT = 480 #define the height of the window
+CELLSIZE = 20 #define the size of each cell 
 assert WINDOWWIDTH % CELLSIZE == 0, "Window width must be a multiple of cell size."
 assert WINDOWHEIGHT % CELLSIZE == 0, "Window height must be a multiple of cell size."
-CELLWIDTH = int(WINDOWWIDTH / CELLSIZE)
-CELLHEIGHT = int(WINDOWHEIGHT / CELLSIZE)
+CELLWIDTH = int(WINDOWWIDTH / CELLSIZE) #so that there is an integer value of cells in the window lengthwise
+CELLHEIGHT = int(WINDOWHEIGHT / CELLSIZE) #so that there is an integer value of cells in the window heightwise
 
-#             R    G    B
+#             R    G    B   #the specific intensities of red, blue, green that must be combined to create the specific colours
 WHITE = (255, 255, 255)
 BLACK = (0,   0,   0)
 RED = (255,   0,   0)
@@ -29,7 +29,7 @@ DARKGREEN = (0, 155,   0)
 DARKGRAY = (40,  40,  40)
 BGCOLOR = BLACK
 
-UP = 'up'
+UP = 'up' #up arrow on keyboard
 DOWN = 'down'
 LEFT = 'left'
 RIGHT = 'right'
