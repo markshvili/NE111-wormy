@@ -87,7 +87,8 @@ def runGame():
     wormCoords = [{'x': startx,     'y': starty},  # coordinates of the two other body segments of the worm
                   {'x': startx - 1, 'y': starty},
                   {'x': startx - 2, 'y': starty}]
-    direction = RIGHT  # starting direction of worm
+   
+    direction = randomizeDirection() # starting direction of worm
 
     # Start the apple in a random place.
     apple = getRandomLocation()
@@ -325,6 +326,16 @@ def drawGrid():  # draw the play screen
         # draw horizontal lines on the DISPLAYSURF surface(game screen) from 0 to y
         pygame.draw.line(DISPLAYSURF, DARKGRAY, (0, y), (WINDOWWIDTH, y))
 
+def randomizeDirection():
+    directionOld=random.randrange(0,5)
+    if directionOld ==1:
+        return UP
+    elif directionOld ==2:
+        return LEFT
+    elif directionOld ==3:
+        return RIGHT
+    else:
+        return DOWN  # starting direction of worm
 
 if __name__ == '__main__':
     main()
