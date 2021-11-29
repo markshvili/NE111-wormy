@@ -330,15 +330,14 @@ def drawGrid():  # draw the play screen
         pygame.draw.line(DISPLAYSURF, DARKBLUE, (0, y), (WINDOWWIDTH, y))
 
 def randomizeDirection():
-    directionOld=random.randrange(0,5)
+    directionOld=random.randrange(0,4)
     if directionOld ==1:
         return UP
     elif directionOld ==2:
-        return LEFT
-    elif directionOld ==3:
         return RIGHT
     else:
-        return DOWN  # starting direction of worm
+        return DOWN
+      # starting direction of worm
 
 if __name__ == '__main__':
     main()
