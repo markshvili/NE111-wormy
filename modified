@@ -90,7 +90,7 @@ def runGame():
     direction = RIGHT  # starting direction of worm
 
     # Start the apple in a random place.
-    apple = getRandomLocation()
+    apple = RandomLocationapple(wormCoords)
 
     while True:  # main game loop
         for event in pygame.event.get():  # event handling loop
@@ -125,7 +125,7 @@ def runGame():
         # when the coordinates of the head equals the coordinates of the apple, a new tail segment is added
         if wormCoords[HEAD]['x'] == apple['x'] and wormCoords[HEAD]['y'] == apple['y']:
             # don't remove worm's tail segment
-            apple = getRandomLocation()  # set a new apple somewhere
+            apple = RandomLocationapple()  # set a new apple somewhere
         else:
             del wormCoords[-1]  # remove worm's tail segment
 
@@ -244,6 +244,12 @@ def terminate():  # Exit the game
 def getRandomLocation():  # function that gets random location, maybe for the apple or the starting position of the worm?
     return {'x': random.randint(0, CELLWIDTH - 1), 'y': random.randint(0, CELLHEIGHT - 1)}
 
+def RandomLocationapple(wormCoords):
+    while True:
+        applecoords = getRandomLocation()
+        if not applecoords in wormCoords:
+            return applecoords
+ 
 
 def showGameOverScreen():  # function defining the game over screen
     # size and font of the "game over"
