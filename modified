@@ -13,8 +13,8 @@ import sys  # imports the system module which is a set of functions which gives 
 from pygame.locals import *  # imports pygame module into current namespace
 
 FPS = 15  # define frames per second, 15 different images show up every second on screen
-WINDOWWIDTH = 640  # define the width of the window
-WINDOWHEIGHT = 480  # define the height of the window
+WINDOWWIDTH = 960  # define the width of the window
+WINDOWHEIGHT = 720  # define the height of the window
 CELLSIZE = 20  # define the size of each cell
 assert WINDOWWIDTH % CELLSIZE == 0, "Window width must be a multiple of cell size."
 assert WINDOWHEIGHT % CELLSIZE == 0, "Window height must be a multiple of cell size."
