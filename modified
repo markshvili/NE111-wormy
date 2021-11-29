@@ -12,9 +12,9 @@ import pygame  # imports all available pygame modules
 import sys  # imports the system module which is a set of functions which gives you info on the runtime environment
 from pygame.locals import *  # imports pygame module into current namespace
 
-FPS = 15  # define frames per second, 15 different images show up every second on screen
-WINDOWWIDTH = 640  # define the width of the window
-WINDOWHEIGHT = 480  # define the height of the window
+FPS = 25  # define frames per second, 15 different images show up every second on screen
+WINDOWWIDTH = 960  # define the width of the window
+WINDOWHEIGHT = 720  # define the height of the window
 CELLSIZE = 20  # define the size of each cell
 assert WINDOWWIDTH % CELLSIZE == 0, "Window width must be a multiple of cell size."
 assert WINDOWHEIGHT % CELLSIZE == 0, "Window height must be a multiple of cell size."
@@ -30,7 +30,10 @@ RED = (255,   0,   0)
 GREEN = (0, 255,   0)
 DARKGREEN = (0, 155,   0)
 DARKGRAY = (40,  40,  40)
-BGCOLOR = BLACK  # background color is black
+LIGHTBLUE = (149, 214, 252)
+LIGHTGREY = (212, 212, 212)
+DARKBLUE = (64, 99, 255)
+BGCOLOR = LIGHTBLUE  # background color is black
 
 UP = 'up'  # up arrow on keyboard
 DOWN = 'down'  # down arrow on keyboard
@@ -58,7 +61,7 @@ def main():
     DISPLAYSURF = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
     # and WINDOWHEIGHT as the height
     # <----- set a font style as freesansbold.ttf, font size as 18 and assign it to BASICFONT
-    BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+    BASICFONT = pygame.font.Font('comicsansms.ttf', 18)
     # set the windows title for the game, like general games in windowed and its name will show on the top left of the window.
     pygame.display.set_caption('Wormy')
 
@@ -87,7 +90,8 @@ def runGame():
     wormCoords = [{'x': startx,     'y': starty},  # coordinates of the two other body segments of the worm
                   {'x': startx - 1, 'y': starty},
                   {'x': startx - 2, 'y': starty}]
-    direction = RIGHT  # starting direction of worm
+   
+    direction = randomizeDirection() # starting direction of worm
 
     # Start the apple in a random place.
     apple = RandomLocationapple(wormCoords)
@@ -187,7 +191,7 @@ def checkForKeyPress():  # Function for reporting user input via keyboard
 
 def showStartScreen():  # Function for displaying start screem
     # Define the font to be used
-    titleFont = pygame.font.Font('freesansbold.ttf', 100)
+    titleFont = pygame.font.Font('comicsansms.ttf', 100)
     # Create the first 'Wormy!' surface; white text with darkgreen background
     titleSurf1 = titleFont.render('Wormy!', True, WHITE, DARKGREEN)
     # Create the second 'Wormy!' surface; green text
@@ -253,7 +257,7 @@ def RandomLocationapple(wormCoords):
 
 def showGameOverScreen():  # function defining the game over screen
     # size and font of the "game over"
-    gameOverFont = pygame.font.Font('freesansbold.ttf', 150)
+    gameOverFont = pygame.font.Font('comicsansms.ttf', 150)
     # brings the "game" text to the surface of screen, sets colour to white
     gameSurf = gameOverFont.render('Game', True, WHITE)
     # brings the "over " txt to front of the screen, sets colour to white
@@ -326,11 +330,20 @@ def drawApple(coord):
 def drawGrid():  # draw the play screen
     for x in range(0, WINDOWWIDTH, CELLSIZE):  # draw vertical lines
         # draw vertical lines on the DISPLAYSURF surface(game screen) from 0 to x
-        pygame.draw.line(DISPLAYSURF, DARKGRAY, (x, 0), (x, WINDOWHEIGHT))
+        pygame.draw.line(DISPLAYSURF, DARKBLUE, (x, 0), (x, WINDOWHEIGHT))
     for y in range(0, WINDOWHEIGHT, CELLSIZE):  # draw horizontal lines
         # draw horizontal lines on the DISPLAYSURF surface(game screen) from 0 to y
-        pygame.draw.line(DISPLAYSURF, DARKGRAY, (0, y), (WINDOWWIDTH, y))
+        pygame.draw.line(DISPLAYSURF, DARKBLUE, (0, y), (WINDOWWIDTH, y))
 
+def randomizeDirection():
+    directionOld=random.randrange(0,4)
+    if directionOld ==1:
+        return UP
+    elif directionOld ==2:
+        return RIGHT
+    else:
+        return DOWN
+      # starting direction of worm
 
 if __name__ == '__main__':
     main()
