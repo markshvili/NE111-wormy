@@ -258,7 +258,7 @@ def terminate():  # Exit the game
 # ------------------------------------------------------------ | | | | |
 # ------------------------------------------------------------ V V V V V
 def getRandomLocation():  # function that gets random location, maybe for the apple or the starting position of the worm?
-    return {'x': random.randint(0, CELLWIDTH - 5), 'y': random.randint(0, CELLHEIGHT - 5)}
+    return {'x': random.randint(5, CELLWIDTH - 5), 'y': random.randint(5, CELLHEIGHT - 5)}
 
 
 def RandomLocationapple(wormCoords, appleList):
