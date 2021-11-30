@@ -267,9 +267,9 @@ def showGameOverScreen():  # function defining the game over screen
     # gets the rectangular area of the surface for "over" text
     overRect = overSurf.get_rect()
     # position of the rectangle containing "game" text (middle of the top edge of the rectangle)
-    gameRect.midtop = (WINDOWWIDTH / 2, 10)
+    gameRect.midtop = (WINDOWWIDTH / 2, 200)
     # position of the rectangle containing "over" text (middle of the top edge of the rectangle)
-    overRect.midtop = (WINDOWWIDTH / 2, gameRect.height + 10 + 25)
+    overRect.midtop = (WINDOWWIDTH / 2, 375)
 
     # displays "game" text with correct font, location, colour on the surface
     DISPLAYSURF.blit(gameSurf, gameRect)
