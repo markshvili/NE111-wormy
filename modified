@@ -61,7 +61,7 @@ def main():
     DISPLAYSURF = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
     # and WINDOWHEIGHT as the height
     # <----- set a font style as freesansbold.ttf, font size as 18 and assign it to BASICFONT
-    BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+    BASICFONT = pygame.font.Font('comicsansms.ttf', 18)
     # set the windows title for the game, like general games in windowed and its name will show on the top left of the window.
     pygame.display.set_caption('Wormy')
 
@@ -129,7 +129,7 @@ def runGame():
         # when the coordinates of the head equals the coordinates of the apple, a new tail segment is added
         if wormCoords[HEAD]['x'] == apple['x'] and wormCoords[HEAD]['y'] == apple['y']:
             # don't remove worm's tail segment
-            apple = RandomLocationapple()  # set a new apple somewhere
+            apple = RandomLocationapple(wormCoords)  # set a new apple somewhere
         else:
             del wormCoords[-1]  # remove worm's tail segment
 
@@ -191,7 +191,7 @@ def checkForKeyPress():  # Function for reporting user input via keyboard
 
 def showStartScreen():  # Function for displaying start screem
     # Define the font to be used
-    titleFont = pygame.font.Font('freesansbold.ttf', 100)
+    titleFont = pygame.font.Font('comicsansms.ttf', 100)
     # Create the first 'Wormy!' surface; white text with darkgreen background
     titleSurf1 = titleFont.render('Wormy!', True, WHITE, DARKGREEN)
     # Create the second 'Wormy!' surface; green text
@@ -246,7 +246,7 @@ def terminate():  # Exit the game
 # ------------------------------------------------------------ | | | | |
 # ------------------------------------------------------------ V V V V V
 def getRandomLocation():  # function that gets random location, maybe for the apple or the starting position of the worm?
-    return {'x': random.randint(0, CELLWIDTH - 3), 'y': random.randint(0, CELLHEIGHT - 3)}
+    return {'x': random.randint(0, CELLWIDTH - 5), 'y': random.randint(0, CELLHEIGHT - 5)}
 
 def RandomLocationapple(wormCoords):
     while True:
@@ -257,7 +257,7 @@ def RandomLocationapple(wormCoords):
 
 def showGameOverScreen():  # function defining the game over screen
     # size and font of the "game over"
-    gameOverFont = pygame.font.Font('freesansbold.ttf', 150)
+    gameOverFont = pygame.font.Font('comicsansms.ttf', 150)
     # brings the "game" text to the surface of screen, sets colour to white
     gameSurf = gameOverFont.render('Game', True, WHITE)
     # brings the "over " txt to front of the screen, sets colour to white
