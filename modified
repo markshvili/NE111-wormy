@@ -307,7 +307,7 @@ def drawScore(score):  # function displaying the score of the game
     # position of the top left corner of rectangle containing the score
     scoreRect.topleft = (WINDOWWIDTH - 120, 10)
     # moves it all to the front of the screen
-    pygame.draw.rect(DISPLAYSURF, BLACK, scoreRect)
+    pygame.draw.rect(DISPLAYSURF, BLACK, scoreRect) #highlights the score
     DISPLAYSURF.blit(scoreSurf, scoreRect)
 # ------------------------------------------------------------ ^ ^ ^ ^ ^
 # ------------------------------------------------------------ | | | | |
