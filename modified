@@ -93,8 +93,8 @@ def runGame():
     wormCoords = [{'x': startx,     'y': starty},  # coordinates of the two other body segments of the worm
                   {'x': startx - 1, 'y': starty},
                   {'x': startx - 2, 'y': starty}]
-
-    direction = randomizeDirection()  # starting direction of worm
+   
+    direction = randomizeDirection() # starting direction of worm
 
     # Start the apple in a random place.
     apple = RandomLocationapple(wormCoords)
@@ -132,8 +132,7 @@ def runGame():
         # when the coordinates of the head equals the coordinates of the apple, a new tail segment is added
         if wormCoords[HEAD]['x'] == apple['x'] and wormCoords[HEAD]['y'] == apple['y']:
             # don't remove worm's tail segment
-            # set a new apple somewhere
-            apple = RandomLocationapple(wormCoords)
+            apple = RandomLocationapple(wormCoords)  # set a new apple somewhere
         else:
             del wormCoords[-1]  # remove worm's tail segment
 
@@ -250,15 +249,14 @@ def terminate():  # Exit the game
 # ------------------------------------------------------------ | | | | |
 # ------------------------------------------------------------ V V V V V
 def getRandomLocation():  # function that gets random location, maybe for the apple or the starting position of the worm?
-    return {'x': random.randint(0, CELLWIDTH - 3), 'y': random.randint(0, CELLHEIGHT - 3)}
-
+    return {'x': random.randint(0, CELLWIDTH - 5), 'y': random.randint(0, CELLHEIGHT - 5)}
 
 def RandomLocationapple(wormCoords):
     while True:
         applecoords = getRandomLocation()
         if not applecoords in wormCoords:
             return applecoords
-
+ 
 
 def showGameOverScreen():  # function defining the game over screen
     # size and font of the "game over"
@@ -272,9 +270,9 @@ def showGameOverScreen():  # function defining the game over screen
     # gets the rectangular area of the surface for "over" text
     overRect = overSurf.get_rect()
     # position of the rectangle containing "game" text (middle of the top edge of the rectangle)
-    gameRect.midtop = (WINDOWWIDTH / 2, 10)
+    gameRect.midtop = (WINDOWWIDTH / 2, 200)
     # position of the rectangle containing "over" text (middle of the top edge of the rectangle)
-    overRect.midtop = (WINDOWWIDTH / 2, gameRect.height + 10 + 25)
+    overRect.midtop = (WINDOWWIDTH / 2, 375)
 
     # displays "game" text with correct font, location, colour on the surface
     DISPLAYSURF.blit(gameSurf, gameRect)
@@ -340,17 +338,15 @@ def drawGrid():  # draw the play screen
         # draw horizontal lines on the DISPLAYSURF surface(game screen) from 0 to y
         pygame.draw.line(DISPLAYSURF, DARKBLUE, (0, y), (WINDOWWIDTH, y))
 
-
 def randomizeDirection():
-    directionOld = random.randrange(0, 4)
-    if directionOld == 1:
+    directionOld=random.randrange(0,4)
+    if directionOld ==1:
         return UP
-    elif directionOld == 2:
+    elif directionOld ==2:
         return RIGHT
     else:
         return DOWN
       # starting direction of worm
-
 
 if __name__ == '__main__':
     main()
