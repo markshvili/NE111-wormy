@@ -1,12 +1,11 @@
 List of changes:
 
--Colour scheme -✔️
--Randomize start direction -R ✔️
--Increase window size/number of cells -V ✔️
--Highlight score Text - V ✔️
--Check spawn location apple location -F ✔️
--Increase fps -M ✔️
--New game over screen -V✔️
--New start animation -M ✔️
--Make apple not spawn at edge ✔️
--2 apples
+-Colour scheme -F 
+-Randomize start direction -R 
+-Increase window size/number of cells -V 
+-Check spawn location apple location -F 
+-Increase fps -M 
+-New game over screen -V
+-New start animation -M 
+-Make apple not spawn at edge -F
+-2 apples -M
