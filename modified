@@ -36,7 +36,8 @@ DARKBLUE = (64, 99, 255)
 PALEBLUE = (138, 202, 255)
 MEDIUMGREEN = (110, 250, 115)
 NEUTRALGREEN = (21, 209, 49)
-BGCOLOR = LIGHTBLUE  # background color is black
+BGCOLOR = LIGHTBLUE  # background color is lightblue
+ENDSCREENBG = BLACK
 
 UP = 'up'  # up arrow on keyboard
 DOWN = 'down'  # down arrow on keyboard
@@ -306,6 +307,7 @@ def drawScore(score):  # function displaying the score of the game
     # position of the top left corner of rectangle containing the score
     scoreRect.topleft = (WINDOWWIDTH - 120, 10)
     # moves it all to the front of the screen
+    pygame.draw.rect(DISPLAYSURF, BLACK, scoreRect)
     DISPLAYSURF.blit(scoreSurf, scoreRect)
 # ------------------------------------------------------------ ^ ^ ^ ^ ^
 # ------------------------------------------------------------ | | | | |
