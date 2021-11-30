@@ -33,6 +33,9 @@ DARKGRAY = (40,  40,  40)
 LIGHTBLUE = (149, 214, 252)
 LIGHTGREY = (212, 212, 212)
 DARKBLUE = (64, 99, 255)
+PALEBLUE = (138, 202, 255)
+MEDIUMGREEN = (110, 250, 115)
+NEUTRALGREEN = (21, 209, 49)
 BGCOLOR = LIGHTBLUE  # background color is black
 
 UP = 'up'  # up arrow on keyboard
@@ -192,11 +195,11 @@ def checkForKeyPress():  # Function for reporting user input via keyboard
 
 def showStartScreen():  # Function for displaying start screem
     # Define the font to be used
-    titleFont = pygame.font.Font('freesansbold.ttf', 100)
+    titleFont = pygame.font.Font('freesansbold.ttf', 150)
     # Create the first 'Wormy!' surface; white text with darkgreen background
-    titleSurf1 = titleFont.render('Wormy!', True, WHITE, DARKGREEN)
+    titleSurf1 = titleFont.render('Wormy!', True, DARKGRAY)
     # Create the second 'Wormy!' surface; green text
-    titleSurf2 = titleFont.render('Wormy!', True, GREEN)
+    titleSurf2 = titleFont.render('Wormy!', True, NEUTRALGREEN)
 
     # Initialize the initial angle of rotation for both titles surfaces
     degrees1 = 0
@@ -232,7 +235,7 @@ def showStartScreen():  # Function for displaying start screem
         pygame.display.update()  # Update the screen
         FPSCLOCK.tick(FPS)  # Update the game's clock
         degrees1 += 3  # rotate by 3 degrees each frame
-        degrees2 += 7  # rotate by 7 degrees each frame
+        degrees2 += 4.5  # rotate by 7 degrees each frame
 
 
 def terminate():  # Exit the game
