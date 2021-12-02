@@ -80,12 +80,14 @@ def main():
 
 def runGame():
     # Set a random start point.
-    startx = random.randint(5, CELLWIDTH - 6) #random x-coordinate of start point of worm
-    starty = random.randint(5, CELLHEIGHT - 6) #random y-coordinate of start point of worm
-    wormCoords = [{'x': startx,     'y': starty}, #coordinates of the two other body segments of the worm
+    # random x-coordinate of start point of worm
+    startx = random.randint(5, CELLWIDTH - 6)
+    # random y-coordinate of start point of worm
+    starty = random.randint(5, CELLHEIGHT - 6)
+    wormCoords = [{'x': startx,     'y': starty},  # coordinates of the two other body segments of the worm
                   {'x': startx - 1, 'y': starty},
                   {'x': startx - 2, 'y': starty}]
-    direction = RIGHT #starting direction of worm
+    direction = RIGHT  # starting direction of worm
 
     # Start the apple in a random place.
     apple = getRandomLocation()
@@ -94,56 +96,63 @@ def runGame():
         for event in pygame.event.get():  # event handling loop
             if event.type == QUIT:
                 terminate()
-            elif event.type == KEYDOWN: #which keys control the direction of the worm
-                if (event.key == K_LEFT or event.key == K_a) and direction != RIGHT: #turn left when left/a key is pressed and the direction of the worm isn't currently right
+            elif event.type == KEYDOWN:  # which keys control the direction of the worm
+                # turn left when left/a key is pressed and the direction of the worm isn't currently right
+                if (event.key == K_LEFT or event.key == K_a) and direction != RIGHT:
                     direction = LEFT
-                elif (event.key == K_RIGHT or event.key == K_d) and direction != LEFT: #turn right when right/d key is pressed and the direction of the worm isn't currently left
+                # turn right when right/d key is pressed and the direction of the worm isn't currently left
+                elif (event.key == K_RIGHT or event.key == K_d) and direction != LEFT:
                     direction = RIGHT
-                elif (event.key == K_UP or event.key == K_w) and direction != DOWN: #turn up when up/w key is pressed and the direction of the worm isn't currently down
+                # turn up when up/w key is pressed and the direction of the worm isn't currently down
+                elif (event.key == K_UP or event.key == K_w) and direction != DOWN:
                     direction = UP
-                elif (event.key == K_DOWN or event.key == K_s) and direction != UP: #turn down when down/s key is pressed and the direction of the worm isn't currently up
+                # turn down when down/s key is pressed and the direction of the worm isn't currently up
+                elif (event.key == K_DOWN or event.key == K_s) and direction != UP:
                     direction = DOWN
-                elif event.key == K_ESCAPE: #quit game when escape key is pressed 
+                elif event.key == K_ESCAPE:  # quit game when escape key is pressed
                     terminate()
 
         # check if the worm has hit itself or the edge
-        if wormCoords[HEAD]['x'] == -1 or wormCoords[HEAD]['x'] == CELLWIDTH or wormCoords[HEAD]['y'] == -1 or wormCoords[HEAD]['y'] == CELLHEIGHT: #when the head of the worm hits a wall (which can be defined as the cellwidth/cell height or a negative coordinate) the game ends
+        # when the head of the worm hits a wall (which can be defined as the cellwidth/cell height or a negative coordinate) the game ends
+        if wormCoords[HEAD]['x'] == -1 or wormCoords[HEAD]['x'] == CELLWIDTH or wormCoords[HEAD]['y'] == -1 or wormCoords[HEAD]['y'] == CELLHEIGHT:
             return  # game over
         for wormBody in wormCoords[1:]:
-            if wormBody['x'] == wormCoords[HEAD]['x'] and wormBody['y'] == wormCoords[HEAD]['y']: #when the worm hits itself (which is defined as when the coordinate of the head equals the coordinate of one of its body segments) the game ends
+            # when the worm hits itself (which is defined as when the coordinate of the head equals the coordinate of one of its body segments) the game ends
+            if wormBody['x'] == wormCoords[HEAD]['x'] and wormBody['y'] == wormCoords[HEAD]['y']:
                 return  # game over
 
         # check if worm has eaten an apple
-        if wormCoords[HEAD]['x'] == apple['x'] and wormCoords[HEAD]['y'] == apple['y']: #when the coordinates of the head equals the coordinates of the apple, a new tail segment is added
+        # when the coordinates of the head equals the coordinates of the apple, a new tail segment is added
+        if wormCoords[HEAD]['x'] == apple['x'] and wormCoords[HEAD]['y'] == apple['y']:
             # don't remove worm's tail segment
             apple = getRandomLocation()  # set a new apple somewhere
         else:
             del wormCoords[-1]  # remove worm's tail segment
 
-        # move the worm by adding a segment in the direction it is moving                                                                                                                                                                     
+        # move the worm by adding a segment in the direction it is moving
         if direction == UP:
             newHead = {'x': wormCoords[HEAD]['x'],
-                       'y': wormCoords[HEAD]['y'] - 1} #when the direction is up add a segment ontop of the head and define it as the new head
+                       'y': wormCoords[HEAD]['y'] - 1}  # when the direction is up add a segment ontop of the head and define it as the new head
         elif direction == DOWN:
             newHead = {'x': wormCoords[HEAD]['x'],
-                       'y': wormCoords[HEAD]['y'] + 1} #when the direction is down add a segment under of the head and define it as the new head
+                       'y': wormCoords[HEAD]['y'] + 1}  # when the direction is down add a segment under of the head and define it as the new head
         elif direction == LEFT:
             newHead = {'x': wormCoords[HEAD]
-                       ['x'] - 1, 'y': wormCoords[HEAD]['y']} #when the direction is left add a segment on the left side of the head and define it as the new head
+                       ['x'] - 1, 'y': wormCoords[HEAD]['y']}  # when the direction is left add a segment on the left side of the head and define it as the new head
         elif direction == RIGHT:
             newHead = {'x': wormCoords[HEAD]
-                       ['x'] + 1, 'y': wormCoords[HEAD]['y']} #when the direction is right add a segment on the right side of the head and define it as the new head
+                       ['x'] + 1, 'y': wormCoords[HEAD]['y']}  # when the direction is right add a segment on the right side of the head and define it as the new head
         wormCoords.insert(0, newHead)
         DISPLAYSURF.fill(BGCOLOR)
-        drawGrid() #execute function
-        drawWorm(wormCoords) #execute function
-        drawApple(apple)#execute function
-        drawScore(len(wormCoords) - 3)#execute function
-        pygame.display.update()#execute function
-        FPSCLOCK.tick(FPS)#execute function
+        drawGrid()  # execute function
+        drawWorm(wormCoords)  # execute function
+        drawApple(apple)  # execute function
+        drawScore(len(wormCoords) - 3)  # execute function
+        pygame.display.update()  # execute function
+        FPSCLOCK.tick(FPS)  # execute function
 # ------------------------------------------------------------ ^ ^ ^
 # ------------------------------------------------------------ | | |
-#------------------------------------------------------------ Flora  
+#------------------------------------------------------------ Flora
 
 #------------------------------------------------------------ Mark
 # ------------------------------------------------------------ | |
@@ -317,7 +326,7 @@ def drawGrid():  # draw the play screen
         pygame.draw.line(DISPLAYSURF, DARKGRAY, (0, y), (WINDOWWIDTH, y))
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # If running code as script, begin the main function
     main()
 # ------------------------------------------------------------ ^ ^
 # ------------------------------------------------------------ | |
