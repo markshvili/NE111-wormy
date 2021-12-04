@@ -99,13 +99,8 @@ def runGame():
     direction = randomizeDirection()  # starting direction of worm
 
     # Start the apple in a random place.
-<<<<<<< HEAD
    
     apples = [] #set apples as an empty set
-=======
-    #apple = RandomLocationapple(wormCoords)
-    apples = []  # set apples as an empty set
->>>>>>> 449285fd1585aba246e7cfb69d3314ab1ba5dd7f
     apples = [RandomLocationapple(
         wormCoords, apples), RandomLocationapple(wormCoords, apples)]  # sets two apples
 
@@ -165,13 +160,8 @@ def runGame():
         elif direction == RIGHT:
             newHead = {'x': wormCoords[HEAD]
                        ['x'] + 1, 'y': wormCoords[HEAD]['y']}  # when the direction is right add a segment on the right side of the head and define it as the new head
-<<<<<<< HEAD
         wormCoords.insert(0, newHead) #add newhead to the list of wormcoords
         DISPLAYSURF.fill(BGCOLOR) #fill screen with background color
-=======
-        wormCoords.insert(0, newHead)
-        DISPLAYSURF.fill(BGCOLOR)
->>>>>>> 449285fd1585aba246e7cfb69d3314ab1ba5dd7f
         drawGrid()  # execute function
         drawWorm(wormCoords)  # execute function
         drawApples(apples)  # execute function
