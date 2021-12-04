@@ -28,7 +28,7 @@ WHITE = (255, 255, 255)
 BLACK = (0,   0,   0)
 RED = (255,   0,   0)
 GREEN = (0, 255,   0)
-#colors we added to change game color scheme
+# colors we added to change game color scheme
 DARKGREEN = (0, 155,   0)
 DARKGRAY = (40,  40,  40)
 LIGHTBLUE = (149, 214, 252)
@@ -99,10 +99,15 @@ def runGame():
     direction = randomizeDirection()  # starting direction of worm
 
     # Start the apple in a random place.
+<<<<<<< HEAD
    
     apples = [] #set apples as an empty set
+=======
+    #apple = RandomLocationapple(wormCoords)
+    apples = []  # set apples as an empty set
+>>>>>>> 449285fd1585aba246e7cfb69d3314ab1ba5dd7f
     apples = [RandomLocationapple(
-        wormCoords, apples), RandomLocationapple(wormCoords, apples)] #sets two apples
+        wormCoords, apples), RandomLocationapple(wormCoords, apples)]  # sets two apples
 
     while True:  # main game loop
         for event in pygame.event.get():  # event handling loop
@@ -136,8 +141,9 @@ def runGame():
         # check if worm has eaten an apple
         # when the coordinates of the head equals the coordinates of the apple, a new tail segment is added
         apple_eaten = False
-        for i in range(len(apples)): #repeats for the number of apples there are
-            if not apple_eaten and wormCoords[HEAD]['x'] == apples[i]['x'] and wormCoords[HEAD]['y'] == apples[i]['y']: #when the apple is eaten
+        for i in range(len(apples)):  # repeats for the number of apples there are
+            # when the apple is eaten
+            if not apple_eaten and wormCoords[HEAD]['x'] == apples[i]['x'] and wormCoords[HEAD]['y'] == apples[i]['y']:
                 # don't remove worm's tail segment
                 apples[i] = RandomLocationapple(
                     wormCoords, apples)  # set a new apple somewhere
@@ -159,8 +165,13 @@ def runGame():
         elif direction == RIGHT:
             newHead = {'x': wormCoords[HEAD]
                        ['x'] + 1, 'y': wormCoords[HEAD]['y']}  # when the direction is right add a segment on the right side of the head and define it as the new head
+<<<<<<< HEAD
         wormCoords.insert(0, newHead) #add newhead to the list of wormcoords
         DISPLAYSURF.fill(BGCOLOR) #fill screen with background color
+=======
+        wormCoords.insert(0, newHead)
+        DISPLAYSURF.fill(BGCOLOR)
+>>>>>>> 449285fd1585aba246e7cfb69d3314ab1ba5dd7f
         drawGrid()  # execute function
         drawWorm(wormCoords)  # execute function
         drawApples(apples)  # execute function
@@ -259,14 +270,18 @@ def terminate():  # Exit the game
 # ------------------------------------------------------------ | | | | |
 # ------------------------------------------------------------ V V V V V
 def getRandomLocation():  # function that gets random location for the apple
-    return {'x': random.randint(5, CELLWIDTH - 5), 'y': random.randint(5, CELLHEIGHT - 5)} #doesn't let apple be drawn on the edge of the screen (5 cells away from the edge)
+    # doesn't let apple be drawn on the edge of the screen (5 cells away from the edge)
+    return {'x': random.randint(5, CELLWIDTH - 5), 'y': random.randint(5, CELLHEIGHT - 5)}
 
 
-def RandomLocationapple(wormCoords, appleList): #function to check if the apple is drawn on the worm
-    while True: #will repeat the function until True
-        applecoords = getRandomLocation() #calls previous function to get random location
-        if (not applecoords in wormCoords) and (not applecoords in appleList): #if the coordinates of the apple is not the same as the segments of the worm or the same as the other apples the apple will be placed at that randomly chosen location
-            return applecoords #random apple coordinates
+# function to check if the apple is drawn on the worm
+def RandomLocationapple(wormCoords, appleList):
+    while True:  # will repeat the function until True
+        # calls previous function to get random location
+        applecoords = getRandomLocation()
+        # if the coordinates of the apple is not the same as the segments of the worm or the same as the other apples the apple will be placed at that randomly chosen location
+        if (not applecoords in wormCoords) and (not applecoords in appleList):
+            return applecoords  # random apple coordinates
 
 
 def showGameOverScreen():  # function defining the game over screen
@@ -308,7 +323,7 @@ def drawScore(score):  # function displaying the score of the game
     # position of the top left corner of rectangle containing the score
     scoreRect.topleft = (WINDOWWIDTH - 120, 10)
     # moves it all to the front of the screen
-    pygame.draw.rect(DISPLAYSURF, BLACK, scoreRect) #highlights the score
+    pygame.draw.rect(DISPLAYSURF, BLACK, scoreRect)  # highlights the score
     DISPLAYSURF.blit(scoreSurf, scoreRect)
 # ------------------------------------------------------------ ^ ^ ^ ^ ^
 # ------------------------------------------------------------ | | | | |
@@ -335,8 +350,8 @@ def drawWorm(wormCoords):
         pygame.draw.rect(DISPLAYSURF, GREEN, wormInnerSegmentRect)
 
 
-def drawApples(apples): #function that draws the appples
-    for apple in apples: 
+def drawApples(apples):  # function that draws the appples
+    for apple in apples:
         x = apple['x'] * CELLSIZE  # position of apple's x value
         y = apple['y'] * CELLSIZE  # position of apple's y value
         appleRect = pygame.Rect(x, y, CELLSIZE, CELLSIZE)  # size of the apple
@@ -353,17 +368,17 @@ def drawGrid():  # draw the play screen
 
 
 def randomizeDirection():
-    directionOld = random.randrange(0, 4)
-    if directionOld == 1:
+    directionOld = random.randrange(0, 4)  # Chose random integer from 0 to 4
+    if directionOld == 1:  # If 1, return up
         return UP
-    elif directionOld == 2:
+    elif directionOld == 2:  # If 2, return right
         return RIGHT
-    else:
+    else:  # Otherwise, return down
         return DOWN
       # starting direction of worm
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # If running code as script, begin the main function
     main()
 # ------------------------------------------------------------ ^ ^
 # ------------------------------------------------------------ | |

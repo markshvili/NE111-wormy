@@ -3,9 +3,7 @@
 # http://inventwithpython.com/pygame
 # Released under a "Simplified BSD" license
 
-#------------------------------------------------------------ Valentyna
-# ------------------------------------------------------------ | | | | |
-# ------------------------------------------------------------ V V V V V
+
 # imports the random module (allows you to randomize things like tha apple's location)
 import random
 import pygame  # imports all available pygame modules
@@ -39,14 +37,6 @@ RIGHT = 'right'  # right arrow on keyboard
 
 HEAD = 0  # syntactic sugar: index of the worm's head
 
-# ------------------------------------------------------------ ^ ^ ^ ^ ^
-# ------------------------------------------------------------ | | | | |
-#------------------------------------------------------------ Valentyna
-
-#------------------------------------------------------------ Ryan
-# ------------------------------------------------------------ | |
-# ------------------------------------------------------------ V V
-
 
 def main():
     global FPSCLOCK, DISPLAYSURF, BASICFONT
@@ -69,14 +59,6 @@ def main():
         # once an "end" game condition is fulfilled, run the showGameOverScreen function to indicate the game is over.
         showGameOverScreen()
 
-# ------------------------------------------------------------ ^ ^
-# ------------------------------------------------------------ | |
-#------------------------------------------------------------ Ryan
-
-#------------------------------------------------------------ Flora
-# ------------------------------------------------------------ | | |
-# ------------------------------------------------------------ V V V
-
 
 def runGame():
     # Set a random start point.
@@ -87,12 +69,7 @@ def runGame():
     wormCoords = [{'x': startx,     'y': starty},  # coordinates of the two other body segments of the worm
                   {'x': startx - 1, 'y': starty},
                   {'x': startx - 2, 'y': starty}]
-<<<<<<< HEAD
-    
-    direction = RIGHT #starting direction of worm
-=======
     direction = RIGHT  # starting direction of worm
->>>>>>> 449285fd1585aba246e7cfb69d3314ab1ba5dd7f
 
     # Start the apple in a random place.
     apple = getRandomLocation()
@@ -133,7 +110,6 @@ def runGame():
             apple = getRandomLocation()  # set a new apple somewhere
         else:
             del wormCoords[-1]  # remove worm's tail segment
-        #this happens because the worm moves by adding a segment in the direction its moving, therefore when the worm turns and hits an apple, it keeps the extra segment and the function sets another apple somewhere else. However, if no apple was eaten in the turn, then a tail segment is deleted. 
 
         # move the worm by adding a segment in the direction it is moving
         if direction == UP:
@@ -156,13 +132,6 @@ def runGame():
         drawScore(len(wormCoords) - 3)  # execute function
         pygame.display.update()  # execute function
         FPSCLOCK.tick(FPS)  # execute function
-# ------------------------------------------------------------ ^ ^ ^
-# ------------------------------------------------------------ | | |
-#------------------------------------------------------------ Flora
-
-#------------------------------------------------------------ Mark
-# ------------------------------------------------------------ | |
-# ------------------------------------------------------------ V V
 
 
 def drawPressKeyMsg():  # Display text at the beginning of the game
@@ -239,14 +208,8 @@ def showStartScreen():  # Function for displaying start screem
 def terminate():  # Exit the game
     pygame.quit()  # Close the windom
     sys.exit()  # Stop the python code
-# ------------------------------------------------------------ ^ ^
-# ------------------------------------------------------------ | |
-#------------------------------------------------------------ Mark
 
 
-#------------------------------------------------------------ Valentyna
-# ------------------------------------------------------------ | | | | |
-# ------------------------------------------------------------ V V V V V
 def getRandomLocation():  # function that gets random location, maybe for the apple or the starting position of the worm?
     return {'x': random.randint(0, CELLWIDTH - 1), 'y': random.randint(0, CELLHEIGHT - 1)}
 
@@ -291,13 +254,6 @@ def drawScore(score):  # function displaying the score of the game
     scoreRect.topleft = (WINDOWWIDTH - 120, 10)
     # moves it all to the front of the screen
     DISPLAYSURF.blit(scoreSurf, scoreRect)
-# ------------------------------------------------------------ ^ ^ ^ ^ ^
-# ------------------------------------------------------------ | | | | |
-#------------------------------------------------------------ Valentyna
-
-#------------------------------------------------------------ Ryan
-# ------------------------------------------------------------ | |
-# ------------------------------------------------------------ V V
 
 
 # this is the draw wormy function with an variable called wormCorrds as wormy corrdinates.
@@ -334,6 +290,3 @@ def drawGrid():  # draw the play screen
 
 if __name__ == '__main__':  # If running code as script, begin the main function
     main()
-# ------------------------------------------------------------ ^ ^
-# ------------------------------------------------------------ | |
-#------------------------------------------------------------ Ryan
