@@ -85,6 +85,7 @@ def runGame():
     wormCoords = [{'x': startx,     'y': starty}, #coordinates of the two other body segments of the worm
                   {'x': startx - 1, 'y': starty},
                   {'x': startx - 2, 'y': starty}]
+    
     direction = RIGHT #starting direction of worm
 
     # Start the apple in a random place.
@@ -119,6 +120,7 @@ def runGame():
             apple = getRandomLocation()  # set a new apple somewhere
         else:
             del wormCoords[-1]  # remove worm's tail segment
+        #this happens because the worm moves by adding a segment in the direction its moving, therefore when the worm turns and hits an apple, it keeps the extra segment and the function sets another apple somewhere else. However, if no apple was eaten in the turn, then a tail segment is deleted. 
 
         # move the worm by adding a segment in the direction it is moving                                                                                                                                                                     
         if direction == UP:
